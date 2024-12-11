@@ -1,3 +1,3 @@
 # Coding Exercises
 
-Containing Coding Exercises that I try to complete during spare time.
+These are self note coding exercises with helpful comments on the solution approach.
