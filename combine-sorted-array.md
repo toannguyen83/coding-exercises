@@ -13,6 +13,18 @@ function combineAndSortArrays(array1: number[], array2: number[]) {
   let index1 = 0;
   let index2 = 0;
 
+  // while loop keeps 2 pointers, one for each array
+  // compare the 2 values of current pointers, if one value is smaller
+  // then add it to the result, and then increment the pointer of the added array number
+  // iteration notes:
+  // compare 4 and -2, since -2 is smaller, add -2 to result [-2], increment array b pointer
+  // compare 4 and 0, add 0 to result [-2, 0]
+  // compare 4 and 2, add 2 to result [-2, 0, 2]
+  // compare 4 and 3, add 3 to result [-2, 0, 3]
+  // compare 4 and 5, add 4 to result [-2, 0, 3, 4], now increment array a pointer
+  // compare 5 and 5, add one of them to result [-2, 0, 3, 4, 5]
+  // compare 7 and 5, add 5 [-2, 0, 3, 4, 5, 5]
+  // now array b index is out of range, while loop stop
   while (index1 < array1.length && index2 < array2.length) {
     let value1 = array1[index1];
     let value2 = array2[index2];
@@ -26,6 +38,13 @@ function combineAndSortArrays(array1: number[], array2: number[]) {
       index2++;
     }
   }
+
+  // at the end if there are remaining numbers in either one of array
+  // we can append to result
+  // at this point the remaining numbers since they are sorted, should be larger 
+  // than the last number in the result.
+  // in this case the last number is 5, remaining array a is [7,9], result should be 
+  // [-2, 0, 2, 3, 4, 5, 5, 7, 9]
 
   if (index1 < array1.length) {
     resultArray.push(...array1.slice(index1));
@@ -70,6 +89,18 @@ function combineAndSortArrays(array1, array2) {
     const resultArray = [];
     let index1 = 0;
     let index2 = 0;
+    // while loop keeps 2 pointers, one for each array
+    // compare the 2 values of current pointers, if one value is smaller
+    // then add it to the result, and then increment the pointer of the added array number
+    // iteration notes:
+    // compare 4 and -2, since -2 is smaller, add -2 to result [-2], increment array b pointer
+    // compare 4 and 0, add 0 to result [-2, 0]
+    // compare 4 and 2, add 2 to result [-2, 0, 2]
+    // compare 4 and 3, add 3 to result [-2, 0, 3]
+    // compare 4 and 5, add 4 to result [-2, 0, 3, 4], now increment array a pointer
+    // compare 5 and 5, add one of them to result [-2, 0, 3, 4, 5]
+    // compare 7 and 5, add 5 [-2, 0, 3, 4, 5, 5]
+    // now array b index is out of range, while loop stop
     while (index1 < array1.length && index2 < array2.length) {
         let value1 = array1[index1];
         let value2 = array2[index2];
@@ -82,6 +113,12 @@ function combineAndSortArrays(array1, array2) {
             index2++;
         }
     }
+    // at the end if there are remaining numbers in either one of array
+    // we can append to result
+    // at this point the remaining numbers since they are sorted, should be larger 
+    // than the last number in the result.
+    // in this case the last number is 5, remaining array a is [7,9], result should be 
+    // [-2, 0, 2, 3, 4, 5, 5, 7, 9]
     if (index1 < array1.length) {
         resultArray.push(...array1.slice(index1));
     }
@@ -137,5 +174,5 @@ runTestCase([4, 5, 7, 9], [-2, 0, 2, 3, 5], [-2, 0, 2, 3, 4, 5, 5, 7, 9]);
 
 </details>
 
-**Playground Link:** [Provided](https://www.typescriptlang.org/play/?#code/PTAEHMEsDcFMDtQCZQGcD2AnALrAJqAIaaaECeAUCEaANoAsANKAKzMDszAnALpVgAjOgFokzAAzMxoAMzMWfEP1ABjTLEK4aAMwCu8FdkjpE2ABabVhROuy7Mps7FDnnKYqTKpQAW1iZwfCJ4AkIAGww0LFw8ZW1MdB8iAXQ4UHVUXTDsZlgADwAHWEMg6HDdZ0hvWlEJKWY5UCZWeQ5uPgo9AyMTVUSBSHhYAEEQgGVo4ZJyVAAKD3IARgAuUHhdHwF-Wh5mBbIkVfXN7Z4ASlAAbwpQPvhUbHTYTOypzyONrcwd0ABeOg6tzCsEegzw+UWf1A4gA3DdQMDQSF8ih-rCKPCAO5mSDA0CzMEQ0AAHiI0zIiwAdMD4OBzKAAGQM0CEvIoUn7JDUhB0swXa63IEg0BlMIVSH-faLWisxY8OGChHC0UVVFkzxIGXItnyjGKyDafEq2CQ4n-Y1IfnwxUZLLYN7kSkFXSoMyzY2LM4KxUs7WLADU-u9twAvtbQLAIs4BT7ba9yU6XW6LV7w7dWUhA8HQGHQ3qWYaCX6SeqltzaeYrTbnnaHWRE67ZpTm1LKagwpAVLAi+C8p7U3nbpHUJVCxmS5zy7yq4K4-aE87G83KZP253uxmzgOc-nbPYbDX4544WGMV1DMYbPoACrPbAAYUII-m5JWa0+pz25MO75O312EaFMUMQAEqHtgHx-jsM4qCYDxEIYujhGBLyPP8sGbIMIzjJM5JzFKX4atuBr4gAUmMADyABybbYJggxQNoZDzIhyHgRcvycaA5HUbR9G0gazH5EUJR4Chdpblc4awfc6DAtS6DgLMAAG14AKJjNeoD3sMYxqaAAAklw8TRDz8YxzFSmcIaGcZlGmXRDGCS+RE2cIoAAAq6WMylnPCuYRlGUmKjJGDyWEikqepmnabp+lGSZfFOUxLlLNZzAJfZSUCSlnLWaAABiwwAJIADJqQAIqA7nDPe14AKrDKVoAAGpNfV+n-JlvFmcllmsWE4nZNZvn+RQp6YDed6Ps+DCtKAnCgLwzA1NIkjIA08gAatdQbbIzDNGwLQLe0fmTfAt4PDN3a0HKK3iNt61ymdU1XU+N2LYsR2LAAHFID0rbU0LbUD62fd9f3IA9L0XdN72zHNx2LctIhrfU+2sCDaN7Y0h3zcj5xAA)
+**Playground Link:** [Provided](https://www.typescriptlang.org/play/?#code/PTAEHMEsDcFMDtQCZQGcD2AnALrAJqAIaaaECeAUCEaANoAsANKAKzMDszAnALpVgAjOgFokzAAzMxoAMzMWfEP1ABjTLEK4aAMwCu8FdkjpE2ABabVhROuy7Mps7FDnnKYqTKpQAW1iZwfCJ4AkIAGww0LFw8ZW1MdB8iAXQ4UHVUXTDsZlgADwAHWEMg6HDdZ0hvWlEJKWY5UCZWeQ5uPgo9AyMTVUSBSHhYAEEQgGVo4ZJyVAAKD3IARgAuUHhdHwF-Wh5mBbIkVfXN7Z4ASlAAbwpQPvhUbHTYTOypzyONrcwd0ABeOg6tzCsEegzw+UWf1A4gA3DdQMDQSF8ih-rCKPDqAB3MyQYEI9DoAqgADWsFgBW8KAK6EGuEwqGYJmc2iwoA0KjMRGmlFu1BUiQKxGcrmQoDKYQq3nQ2lU9nU8EeNLp-kZoEgsuZ4vKlW8qB84WBmExYFciEIeAIkEe2HQLicTxeOWCBDN6oM6j8ivtzmViv8oBlPqIlqC+zWn38JvV9M0xkQ8HQuFQy2jAp8QvUTRdoFqaEGKmconVeoNYSNe0tuZQtsdWUeNSQu3dalgXse4aEfvpacFwuz1gIkhDQ5cdoy9ZE0nEfD5YHTmec9Bz0gtBBr4+ek8bdWQs9A-L7WeXg9klYIMjHdeyU93Mn3h4z-ZPIRaI+ztYnN530IazHozaJliLaeggHY8jQ3ZRnOfRPlmLA5mw75akGrhJJ+W7fnmw6NM0Ci9nBzjsIh56sLev5nk0rSsA+YBAdynigEIYL5CWga6I8QakPAgTMDieLOGEhLEg8RLwvx+KzCxeSQgAPAxSwAHTAjx5igAAZOp7rgnkKDyfsSDKQg4DmBc1y3ECILapKsCQv8+yLLQ0mLDwcIWQiVkShUqIKQcTnIrprkYu5GqgLMXm2aAsn-BFSBmfC7lftgbzkIpBS6KgZjhTqixnG57naRCADURX5bcAC+CXshEzjmQVSUpWQaUZVlsV5VVtzSUgJVlaAlUVcFB5gJYooIFasquFm-aeoQgyDOAEYnAy7rstaTiYIGQyBrK+zRlizgqNYRAFEUr4YU60Yjbi3jdsGM1zTxi1fHqBYik4ZDcs4GA4PgzCZegWQEFsCLEIEG3RuYR2imEhAPE9AaDHdmHYIp0aI+YVRWKgb2CbDjzHF8bFIfd8Dzb5NCY7QnC8MwSVoGYANhEDzjRj+w7SLh1FIZwoC8INoVSQFcm+YsRmqWY8WJcjjXNZlsyKQrDmKagYSQIWgs6bl7UDbcsA1eqsoayiUW+YZKkmRLVxVQ1PKy1lCuKQZyuq+rXVnNrfWDbY9g2NLPJwpVGJdIY8bpPoAAqzzYAAwrDsDzDyKzw98zYGR8S07LkhTFDEABKyPp18OyS3ccOEIYujhPnTpQumAxDKMeATDgjVzA5ew8nF+UCwAUmMADyAByyvYJg80amQ8wV1XyMXL88+gH3Q8j2PPET7M+RFCUeDV-W7tW+5Ar3OgwLKeg4CzAABuHACiYzh6A0fDGMN+gAAJJcS-Dw8q9QNok8OTOOVd+n8B7f1HuPf+CdPBxWAcIUAAAFZ+YxL5nHhP1aq2MD4WSPhgU+QkL7Xzvg-J+L8QFfxXpAgBicgHMA-hQn+VDoHkFgaAAAYsMAAkgAGRvgAEVzKAYY0dw4AFVhjcNAAANQkaI1+-x6FgMoWvKB5c7AzydEA1B6CKCB0wBHKOsdsazAYNRHmNNyLsz-DRZgbN6iUTwmY9oaD9HwEjg8Ix8daAuVsTOXxzAXIuIMR4uOJieaLCQosAAHFIPxljmx2NAOEyJMTkAziCW4wxoTTFvnMQk7C9jGgKFsQU5A1jHG5OcUAA)
       
