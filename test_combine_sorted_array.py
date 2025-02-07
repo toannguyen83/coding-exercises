@@ -33,18 +33,33 @@ def combine_sorted_arrays(array_a: list[int], array_b: list[int]) -> list[int]:
     return result
 
 
-def run_test(a: list[int], b: list[int], expected: list[int]):
+import pytest
+
+test_data = [
+    [
+        [4, 5, 7, 9],
+        [-2, 0, 2, 3, 5],
+        [-2, 0, 2, 3, 4, 5, 5, 7, 9],
+    ],
+    [
+        [1],
+        [0],
+        [0, 1],
+    ],
+    [
+        [7, 15, 18, 20],
+        [-2, 0],
+        [-2, 0, 7, 15, 18, 20],
+    ],
+    [[4, 5, 7, 9], [-2, 0, 2, 3, 5], [-2, 0, 2, 3, 4, 5, 5, 7, 9]],
+]
+
+
+@pytest.mark.parametrize("a, b, expected", test_data)
+def test_combine_sorted_arrays(a: list[int], b: list[int], expected: list[int]):
     actual = combine_sorted_arrays(a, b)
-    if actual == expected:
-        print(f"PASS: {a} + {b} => {actual}")
-    else:
-        print(f"FAIL: {a} + {b} => {actual} (expected: {expected})")
+    assert actual == expected
 
-
-run_test([4, 5, 7, 9], [-2, 0, 2, 3, 5], [-2, 0, 2, 3, 4, 5, 5, 7, 9])
-run_test([1], [0], [0, 1])
-run_test([7, 15, 18, 20], [-2, 0], [-2, 0, 7, 15, 18, 20])
-run_test([4, 5, 7, 9], [-2, 0, 2, 3, 5], [-2, 0, 2, 3, 4, 5, 5, 7, 9])
 
 """
 Output: 

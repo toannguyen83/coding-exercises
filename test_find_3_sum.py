@@ -52,22 +52,25 @@ def are_arrays_equal(array1: list[int], array2: list[int]) -> bool:
     return True
 
 
-def run_test(array: list[int], expected: list[list[int]]):
+import pytest
+
+test_data = [
+    [[-5, -2, 0, -1, 1, 1, 4], [[-5, 1, 4], [-2, 1, 1], [-1, 0, 1]]],
+    [[0, 0, 0, 0], [[0, 0, 0]]],
+    [[0, 1, 2, 3], []],
+    # corner cases
+    [
+        [-5, -5, -4, -4, 0, 1, 1, 4, 4, 2, 2, 3, 3],
+        [[-5, 1, 4], [-5, 2, 3], [-4, 0, 4], [-4, 1, 3], [-4, 2, 2]],
+    ],
+]
+
+
+@pytest.mark.parametrize("array, expected", test_data)
+def test_find_3_sum(array: list[int], expected: list[list[int]]):
     actual = find_3_sum(array)
-    if are_arrays_equal(actual, expected):
-        print(f"PASS: {array} => {actual}")
-    else:
-        print(f"FAIL: {array} => {actual} (expected: {expected})")
+    assert actual == expected
 
-
-run_test([-5, -2, 0, -1, 1, 1, 4], [[-5, 1, 4], [-2, 1, 1], [-1, 0, 1]])
-run_test([0, 0, 0, 0], [[0, 0, 0]])
-run_test([0, 1, 2, 3], [])
-# corner cases
-run_test(
-    [-5, -5, -4, -4, 0, 1, 1, 4, 4, 2, 2, 3, 3],
-    [[-5, 1, 4], [-5, 2, 3], [-4, 0, 4], [-4, 1, 3], [-4, 2, 2]],
-)
 
 """
 Output
